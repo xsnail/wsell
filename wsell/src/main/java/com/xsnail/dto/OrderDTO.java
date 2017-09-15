@@ -1,10 +1,12 @@
 package com.xsnail.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.xsnail.dataobject.OrderDetail;
 import com.xsnail.enums.OrderStatusEnum;
 import com.xsnail.enums.PayStatusEnum;
+import com.xsnail.util.EnumUtil;
 import com.xsnail.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
@@ -52,4 +54,14 @@ public class OrderDTO {
     private Date updateTime;
 
     private List<OrderDetail> orderDetailList;
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum(){
+        return EnumUtil.getByCode(orderStatus,OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getByCode(payStatus,PayStatusEnum.class);
+    }
 }

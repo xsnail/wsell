@@ -3,7 +3,7 @@ package com.xsnail.enums;
 /**
  * Created by Administrator on 2017/9/5 0005.
  */
-public enum PayStatusEnum {
+public enum PayStatusEnum implements CodeEnum<Integer>{
     WAIT(0,"等待支付"),
     SUCCESS(1,"支付成功")
     ;

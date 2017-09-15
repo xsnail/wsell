@@ -17,7 +17,11 @@ public enum ResultEnum {
     ORDER_PAY_STATUS_ERROR(17,"支付状态不正确"),
     ORDER_OWNER_ERROR(18,"该订单不属于当前用户"),
     WECHAT_MP_ERROR(20,"微信公众账号方面错误"),
-    WXPAY_NOTIFY_MONEY_ERROR(21,"微信异步通知金额校验失败")
+    WXPAY_NOTIFY_MONEY_ERROR(21,"微信异步通知金额校验失败"),
+    ORDER_CANCEL_SUCCESS(22,"订单取消成功"),
+    ORDER_FINISH_SUCCESS(23,"订单完结成功"),
+    LOGIN_FAIL(24,"登录失败,信息不正确"),
+    LOGOUT_SUCCESS(25,"登出成功")
     ;
 
 
