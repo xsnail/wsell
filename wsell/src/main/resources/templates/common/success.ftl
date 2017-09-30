@@ -14,7 +14,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4>
                    成功!
-                </h4> <strong>${msg}</strong> <a href="${url}" class="alert-link">3s后自动跳转</a>
+                </h4> <strong>${msg!""}</strong> <a href="${url}" class="alert-link">3s后自动跳转</a>
             </div>
         </div>
     </div>
@@ -22,6 +22,6 @@
 </body>
 
 <script>
-    setTimeout('location.href=${url}',3000);
+    setTimeout('location.href="${url}"',3000);
 </script>
 </html>

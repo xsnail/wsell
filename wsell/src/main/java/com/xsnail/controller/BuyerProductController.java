@@ -9,6 +9,7 @@ import com.xsnail.vo.ProductInfoVO;
 import com.xsnail.vo.ProductVO;
 import com.xsnail.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,29 +31,8 @@ public class BuyerProductController {
     private CategoryService categoryService;
 
     @GetMapping("/list")
+    @Cacheable(cacheNames = "product",key = "123")
     public ResultVO list(){
-//        List<ProductCategory> productCategoryList = categoryService.findAll();
-//        List<ProductVO> productVOList = new ArrayList<>();
-//        for(ProductCategory productCategory : productCategoryList){
-//            List<ProductInfoVO> productInfoVOList = new ArrayList<>();
-//            ProductVO productVO = new ProductVO();
-//            productVO.setCategoryName(productCategory.getCategoryName());
-//            productVO.setCategoryType(productCategory.getCategoryType());
-//            List<ProductInfo> productInfoList = productService.findUpAll();
-//            for(ProductInfo productInfo : productInfoList){
-//                ProductInfoVO productInfoVO = new ProductInfoVO();
-//                productInfoVO.setProductDesc(productInfo.getProductDescription());
-//                productInfoVO.setProductIconUrl(productInfo.getProductIcon());
-//                productInfoVO.setProductId(productInfo.getProdcutId());
-//                productInfoVO.setProductName(productInfo.getProductName());
-//                productInfoVO.setProductPrice(productInfo.getProductPrice());
-//                productInfoVOList.add(productInfoVO);
-//            }
-//            productVO.setCategoryProductList(productInfoVOList);
-//            productVOList.add(productVO);
-//        }
-//        return new ResultVO();
-
         List<ProductInfo> productInfoList = productService.findUpAll();
 
         List<Integer> categoryTypeList = new ArrayList<>();

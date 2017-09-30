@@ -12,9 +12,7 @@ import com.xsnail.enums.ResultEnum;
 import com.xsnail.exception.SellException;
 import com.xsnail.repository.OrderDetailRepository;
 import com.xsnail.repository.OrderMasterRepository;
-import com.xsnail.service.OrderService;
-import com.xsnail.service.PayService;
-import com.xsnail.service.ProductService;
+import com.xsnail.service.*;
 import com.xsnail.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -49,6 +47,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMasterRepository orderMasterRepository;
+
+    @Autowired
+    private PushMessageService pushMessageService;
+
+    @Autowired
+    private WebSocket webSocket;
 
     @Override
     @Transactional
@@ -92,6 +96,9 @@ public class OrderServiceImpl implements OrderService {
         //4.扣库存
         //TODO
         productService.decreaseStock(cartDTOList);
+
+        //发送websocket消息
+        webSocket.sendMessage("有新的订单");
 
         return orderDTO;
     }
@@ -174,6 +181,10 @@ public class OrderServiceImpl implements OrderService {
         if(updateResult == null){
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+
+        //推送微信模板消息
+        pushMessageService.orderStatus(orderDTO);
+
         return orderDTO;
     }
 

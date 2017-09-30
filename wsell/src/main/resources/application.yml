@@ -22,10 +22,12 @@ wechat:
   mchKey:
   keyPath:
   notifyUrl:
+  templateId:
+    orderStatus:
 
 projectUrl:
-  wechatMpAuthorize: http://127.0.0.1
-  wechatOpenAuthorize: http://127.0.0.1
-  sell: http://127.0.0.1
+  wechatMpAuthorize:  http://lovecqfforever.s1.natapp.cc
+  wechatOpenAuthorize:  http://lovecqfforever.s1.natapp.cc
+  sell:  http://lovecqfforever.s1.natapp.cc
 
 
