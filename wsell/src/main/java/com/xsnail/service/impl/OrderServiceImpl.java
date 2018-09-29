@@ -54,6 +54,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private WebSocket webSocket;
 
+
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -85,7 +86,7 @@ public class OrderServiceImpl implements OrderService {
 
         //4.写入订单数据库
         OrderMaster orderMaster = new OrderMaster();
-       orderDTO.setOrderId(orderId);
+        orderDTO.setOrderId(orderId);
         BeanUtils.copyProperties(orderDTO,orderMaster);
         orderMaster.setOrderId(orderId);
         orderMaster.setOrderAmount(orderAmount);

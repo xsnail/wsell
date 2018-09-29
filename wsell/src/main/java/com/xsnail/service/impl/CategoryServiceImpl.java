@@ -1,6 +1,7 @@
 package com.xsnail.service.impl;
 
 import com.xsnail.dataobject.ProductCategory;
+import com.xsnail.mapper.ProductCategoryMapper;
 import com.xsnail.repository.ProductCategoryRepository;
 import com.xsnail.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,17 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private ProductCategoryRepository repository;
 
+    @Autowired
+    private ProductCategoryMapper productCategoryMapper;
+
     @Override
     public ProductCategory findOne(Integer categoryId) {
-        return repository.findOne(categoryId);
+        return productCategoryMapper.findOne(categoryId);
     }
 
     @Override
     public List<ProductCategory> findAll() {
-        return repository.findAll();
+        return productCategoryMapper.findAll();
     }
 
     @Override
@@ -34,6 +38,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public ProductCategory save(ProductCategory productCategory) {
-        return repository.save(productCategory);
+        return productCategoryMapper.save(productCategory);
     }
 }

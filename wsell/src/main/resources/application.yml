@@ -12,8 +12,8 @@ spring:
     host: 127.0.0.1
     port: 6379
 server:
-  context-path: /sell
-  port: 80
+#  context-path: /sell
+  port: 8080
 
 wechat:
   mpAppId: wx70a9ecc9a3e82672
@@ -29,5 +29,16 @@ projectUrl:
   wechatMpAuthorize:  http://lovecqfforever.s1.natapp.cc
   wechatOpenAuthorize:  http://lovecqfforever.s1.natapp.cc
   sell:  http://lovecqfforever.s1.natapp.cc
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+logging:
+  level:
+    com.xsnail.mapper: trace
+
+
+
+
+
 
 
